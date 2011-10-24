@@ -1,0 +1,62 @@
+<!-- search_form -->
+{form_begin}
+<table class="maintable">
+  <tr>
+    <th colspan="2">{l_Search}</th>
+  </tr>
+  <tr>
+    <td class="fieldtitle">{l_SearchKeywords}</td><td>{keywords_input}<div class="moreinfo">{keywords_explain}</div></td>
+  </tr>
+  <tr>
+    <td class="fieldtitle">{l_SearchMode}</td><td>{mode_input}</td>
+  </tr>
+  <tr>
+    <td class="fieldtitle">{l_SearchAuthor}</td><td>{author_input} {exact_match_input} {include_guests_input}</td>
+  </tr>
+  <tr>
+    <td class="fieldtitle">{l_SearchForums}</td><td>{forums_input}</td>
+  </tr>
+  <tr>
+    <td class="fieldtitle">{l_SortBy}</td><td>{sort_input}</td>
+  </tr>
+  <tr>
+    <td class="fieldtitle">{l_ShowResultsAs}</td><td>{show_mode_input}</td>
+  </tr>
+  <tr>
+    <td class="formcontrols" colspan="2">{submit_button} {reset_button}</td>
+  </tr>
+</table>
+{form_end}
+
+<!-- results_header -->
+
+<p id="pagelinksothertop">{page_links}</p>
+<table class="maintable">
+  <tr>
+    <td colspan="7" class="forumcat">{l_SearchKeywords}: <em>{keywords}</em><div>{l_SearchMode}: {mode}</div></td>
+  </tr>
+  <tr>
+    <th class="icon"></th>
+    <th>{l_Forum}</th>
+    <th>{l_Topic}</th>
+    <th class="count">{l_Replies}</th>
+    <th class="count">{l_Views}</th>
+    <th class="lastpostinfo">{l_LatestPost}</th>
+  </tr>
+  <!-- result_topic -->
+
+  <tr>
+    <td class="icon"><img src="{img_dir}{topic_icon}" alt="{topic_status}" /></td>
+    <td class="atforum">{forum}</td>
+    <td><div class="topicname">{topic_name}</div><div class="topicpagelinks">{topic_page_links}</div><div class="author">&mdash; {author}</div></td>
+    <td class="count">{replies}</td>
+    <td class="count">{views}</td>
+    <td class="lastpostinfo">{by_author} <a href="{last_post_url}">&gt;&gt;</a><div>{on_date}</div></td>
+  </tr>
+
+  <!-- results_posts_footer -->
+
+
+</table>
+<p id="pagelinksotherbottom">{page_links}</p>
+

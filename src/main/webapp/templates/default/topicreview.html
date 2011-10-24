@@ -1,0 +1,33 @@
+<!-- $templates['header'] = ' -->
+<table class="maintable">
+  <tr>
+    <td colspan="2" class="forumcat">&raquo; {l_TopicReview}</td>
+  </tr>
+  <tr>
+    <th>{l_Author}</th>
+    <th>{l_Post}</th>
+  </tr>
+
+  <!-- $templates['post'] = ' -->
+  <tr class="tr{colornum}">
+    <td class="postername">
+      <div class="posternamecontainer">{poster_name}</div>
+    </td>
+    <td class="postcontent" rowspan="2">
+      <div class="post">{post_content}</div>
+    </td>
+  </tr>
+  <tr class="tr{colornum}">
+    <td class="posterinfo">
+      <div class="field">{post_date}</div>
+    </td>
+  </tr>
+
+  <!-- $templates['footer'] = ' -->
+  <tr>
+    <td class="formcontrols" colspan="2">
+      {view_more_posts}
+    </td>
+  </tr>
+</table>
+
