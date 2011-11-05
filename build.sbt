@@ -7,7 +7,7 @@ seq(webSettings: _*)
 // If using JRebel
 jettyScanDirs := Nil
 
-// retrieveManaged := true
+retrieveManaged := true
 
 resolvers += "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 
