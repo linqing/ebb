@@ -244,7 +244,7 @@ CREATE TABLE `ebb_posts` (
 
 LOCK TABLES `ebb_posts` WRITE;
 /*!40000 ALTER TABLE `ebb_posts` DISABLE KEYS */;
-INSERT INTO `ebb_posts` VALUES (1,1,0,'UseBB Installer','127.0.0.1','Thanks for choosing UseBB! We wish you a lot of fun with your board!\n\nDon\'t forget to direct any feature requests and ideas for the next major release (2.0) to the [url=http://usebb.sourceforge.net/]development site[/url].',1319192829,0,0,1,1,1,0);
+INSERT INTO `ebb_posts` VALUES (1,1,1,'UseBB Installer','127.0.0.1','Thanks for choosing UseBB! We wish you a lot of fun with your board!\n\nDon\'t forget to direct any feature requests and ideas for the next major release (2.0) to the [url=http://usebb.sourceforge.net/]development site[/url].',1319192829,0,0,1,1,1,0);
 /*!40000 ALTER TABLE `ebb_posts` ENABLE KEYS */;
 UNLOCK TABLES;
 
