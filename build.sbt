@@ -12,7 +12,7 @@ retrieveManaged := true
 resolvers += "Java.net Maven2 Repository" at "http://download.java.net/maven/2/"
 
 libraryDependencies ++= {
-  val liftVersion = "2.4-M4" // Put the current/latest lift version here
+  val liftVersion = "2.4-M5" // Put the current/latest lift version here
   Seq(
     "net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",
     "net.liftweb" %% "lift-mapper" % liftVersion % "compile->default",
