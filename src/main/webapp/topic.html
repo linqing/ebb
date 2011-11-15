@@ -1,0 +1,63 @@
+<div id="main" class="lift:surround?with=default;at=content">
+	<h3 id="forumname">{topic_name}</h3>
+	<p id="forummods">{forum_moderators}</p>
+	<p id="toolbartop">{reply_link}</p>
+	<p id="pagelinkstop">{page_links}</p>
+
+	<table class="lift:ForumSnippet.topic maintable">
+	    <tr>
+	        <th>{l_Author}</th>
+	        <th>{l_Post}</th>
+	    </tr>
+	    <tr class="tr{colornum}">
+	        <td class="postername">
+	            <div class="posternamecontainer"><span class="_poster_name">{poster_name}</span></div>
+	        </td>
+	        <td class="postinfo">
+	            <div class="postlinks">{post_links}</div>
+	            <div class="postdate">{post_anchor} 
+	            	<span class="_postdate">{post_date}</span>
+	            </div>
+	        </td>
+	    </tr>
+	    <tr class="tr{colornum}">
+	        <td class="posterinfo">
+	            {poster_rank}
+	            <div class="avatar"><span class="_poster_avatar">{poster_avatar}</span></div>
+	            <div class="field">Registered: <span class="_registered">{registered}</span></div>
+	            <div class="field">Posts: <span class="_posts">{posts}</span></div>
+	            <div class="field"><span class="_location">{location}</span></div>
+	        </td>
+	        <td class="postcontent">
+	            <div class="post">
+		            <span class="_post_content">${post_content}</span>
+		            <span class="_poster_sig">${poster_sig}</span>
+		            <span class="_post_editinfo">${post_editinfo}</span>
+		        </div>
+		        <span class="_poster_ip_addr">{poster_ip_addr}</span>
+	        </td>
+	    </tr>
+	</table>
+
+	<p id="toolbarbottom">{reply_link}</p>
+	<p id="pagelinksbottom">{page_links}</p>
+	<div id="bottomfix"></div>
+	<p id="actionlinks">{action_links}</p>
+	    
+	<table class="maintable">
+	    <tr>
+	        <th colspan="2">{l_QuickReply}</th>
+	    </tr>
+	    <tr>
+	        <td class="fieldtitle">{l_Username}</td><td>{username_input}</td>
+	    </tr>
+	    <tr>
+	        <td colspan="2">{content_input}</td>
+	    </tr>
+	    <tr>
+	        <td colspan="2" class="formcontrols">{submit_button}&nbsp;{preview_button}</td>
+	    </tr>
+	</table>
+</div>
+
+
