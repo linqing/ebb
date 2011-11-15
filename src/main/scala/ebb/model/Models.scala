@@ -132,7 +132,9 @@ class Topic(
   val last_post_id: Long,
   val count_replies: Long,
   val status_locked: Boolean,
-  val status_sticky: Boolean) extends KeyedEntity[Long]
+  val status_sticky: Boolean) extends KeyedEntity[Long] {
+  lazy val posts: OneToMany[Post] = Models.topicToPosts.left(this)
+}
 
 object Models extends Schema {
   val badwords = table[Badword]("ebb_badwords")
@@ -147,5 +149,7 @@ object Models extends Schema {
   val topics = table[Topic]("ebb_topics")
   val catToForums =
     oneToManyRelation(cats, forums).
-      via((c, f) => c.id === f.cat_id )
+      via((c, f) => c.id === f.cat_id)
+  val topicToPosts =
+    oneToManyRelation(topics, posts).via((t, p) => t.id === p.topic_id)
 }
