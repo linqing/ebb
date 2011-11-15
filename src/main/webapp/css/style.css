@@ -1,0 +1,799 @@
+/*
+	$Id: styles.css 1765 2011-07-27 09:07:49Z pc_freak $
+*/
+
+* {
+	margin: 0;
+	padding: 0;
+}
+html, body {
+	font-size: 8pt;
+	font-family: verdana, sans-serif;
+	text-align: center;
+	background-image: url(gfx/body_bg.png);
+	background-color: #CCC;
+	cursor: default;
+	color: #000;
+}
+#pagebox-bg {
+	width: 785px;
+	background-image: url(gfx/pagebox_bg.png);
+	background-repeat: repeat-x;
+	background-color: #FFF;
+	margin: 0 auto 0 auto;
+}
+#shadow-left {
+	background-image: url(gfx/pageshadow_left.png);
+	background-repeat: repeat-y;
+	background-position: left;
+}
+#shadow-right {
+	padding: 20px 30px 15px 30px;
+	background-image: url(gfx/pageshadow_right.png);
+	background-repeat: repeat-y;
+	background-position: right;
+}
+a img {
+	border: 0;
+}
+a:link, a:active, a:visited {
+	color: #369;
+	text-decoration: underline;
+}
+a:hover {
+	color: #7F0000 !important;
+	text-decoration: none;
+}
+a.administrator:link, a.administrator:active, a.administrator:visited {
+	color: #B20000 !important;
+}
+a.moderator:link, a.moderator:active, a.moderator:visited {
+	color: #0000B2 !important;
+}
+
+textarea {
+	width: 99%;
+	font-size: 9pt !important;
+	font-family: Verdana, sans-serif !important;
+}
+textarea#tags-txtarea {
+	width: 98%;
+	padding: 3px;
+}
+input[type="submit"], input[type="reset"], input[type="button"],
+label, input[type="radio"], input[type="checkbox"], select {
+	cursor: pointer;
+}
+optgroup option {
+	padding: 0 10px 0 10px;
+}
+
+input[type="reset"] {
+	font-weight: normal !important;
+	color: #666;
+	font-style: italic;
+}
+
+pre.code {
+	display: block;
+	margin: 0 25px 0 25px;
+	padding: 5px;
+	font-family: monospace;
+	color: #7F0000;
+	background-color: #FFF;
+	border: 1px solid #BFBFBF;
+	overflow: auto;
+	font-size: 8pt;
+}
+table.maintable pre.code {
+	width: 502px;
+	padding: 5px 5px 20px 5px;
+}
+html>body table.maintable pre.code {
+	padding: 5px;
+}
+
+
+blockquote.quote {
+	margin: 0 25px 0 25px;
+	font-size: 8pt;
+}
+blockquote.quote .title {
+	font-weight: bold;
+	padding: 3px;
+}
+blockquote.quote .content {
+	padding: 10px;
+	color: #333;
+	background-image: url(gfx/quote_bg.png);
+	background-repeat: no-repeat;
+	background-position: top right;
+	background-color: #FFF;
+	border: 1px solid #BFBFBF;
+	overflow: auto;
+}
+
+
+hr {
+	border: 0;
+	border-top: 1px solid silver;
+	padding: 6px;
+}
+#logo {
+	float: left;
+	height: 30px;
+}
+h1#boardname {
+	text-align: right;
+	font-size: 13pt;
+	font-weight: bold;
+	color: #369;
+	line-height: 30px !important;
+}
+h1#boardname #line {
+	padding: 0 0 2px 0;
+	border-bottom: 2px solid #EBD6AD;
+}
+h2#boarddescr {
+	text-align: right;
+	font-size: 10pt;
+	font-weight: normal;
+	font-style: italic;
+	color: #7F7F7F;
+	line-height: 30px !important;
+}
+#topmenu * {
+	text-align: left;
+}
+#topmenu {
+	clear: both;
+	float: left;
+	width: 723px;
+	background-image: url(gfx/topmenu_bg.png);
+	background-repeat: repeat-x;
+	background-color: #E8E8E8;
+	border: 1px solid #369;
+	padding: 3px 0 3px 0;
+	margin: 5px 0 0 0;
+}
+#topmenu ul {
+	list-style: none;
+}
+#topmenu ul li {
+	display: inline;
+}
+#topmenu ul li a:link, #topmenu ul li a:visited, #topmenu ul li a:hover {
+	text-decoration: none;
+	padding: 3px 7px 3px 7px;
+	border-right: 1px solid #369;
+}
+#topmenu ul li#logout a:link, #topmenu ul li#logout a:visited, #topmenu ul li#logout a:hover {
+	border-right: 0;
+	border-left: 1px solid #369;
+}
+#topmenu ul li a:link, #topmenu ul li a:visited {
+	color: #369;
+}
+#topmenu ul li a:active, #topmenu ul li a:hover {
+	color: #7F0000;
+	background-image: url(gfx/topmenu_bg_reverse.png);
+	background-repeat: repeat-x;
+	background-color: #FFF;
+}
+#topmenu-shadow {
+	clear: both;
+	height: 5px;
+	background-image: url(gfx/topmenu_shadow.png);
+	background-repeat: repeat-x;
+	background-color: #FFF;
+	line-height: 100%;
+	overflow: hidden;
+	margin: 0 0 15px 0;
+	width: 100%; /* Be nice to Safari */
+}
+p.locationbar {
+	clear: both;
+	text-align: left;
+	font-style: italic;
+	color: #333;
+	margin: -10px 0 10px 0;
+	padding: 3px;
+}
+p.locationbar a {
+	font-style: normal;
+}
+
+/* Global styles */
+
+table.maintable, table.confirmform {
+	clear: both;
+	border-collapse: collapse;
+	border-left: 1px solid silver;
+	border-right: 1px solid silver;
+	border-bottom: 1px solid silver;
+	margin: 0 0 20px 0;
+	width: 100%;
+	font-size: 8pt;
+}
+table.maintable th, table.confirmform th {
+	color: #EBD6AD;
+	font-weight: bold;
+	background-color: #369;
+	background-image: url(gfx/tableheadbg.gif);
+	background-position: top;
+	background-repeat: repeat-x;
+	text-align: left;
+	padding: 4px 6px 4px 6px;
+	border-left: 1px solid silver;
+	border-top: 1px solid silver;
+	white-space: nowrap;
+	text-shadow: #4F4F4F 1px 1px 1px;
+}
+table.maintable td, table.confirmform td, td.msg {
+	background-color: #EFEFEF;
+	padding: 6px !important;
+	text-align: left;
+	border-left: 1px solid silver;
+	border-top: 1px solid silver;
+	vertical-align: middle;
+}
+table.maintable td a:visited {
+	color: #555;
+}
+table.maintable td ul {
+	margin-left: 15px;
+}
+td.fieldtitle {
+	background-color: #E8E8E8 !important;
+	width: 25%;
+	height: 1%;
+	font-weight: bold;
+}
+td.formcontrols {
+	background-color: #E8E8E8 !important;
+	text-align: center !important;
+	padding: 6px !important;
+}
+td.formcontrols input {
+	font-weight: bold;
+	min-width: 65px;
+}
+td.formcontrols a {
+	color: #369 !important;
+}
+td.formcontrols .postformshortcut {
+	margin-top: 3px;
+	color: #666;
+	font-size: 7pt;
+}
+table.maintable th.icon {
+	width: 25px;
+}
+table.maintable td.icon {
+	background-color: #E8E8E8;
+	width: 25px;
+}
+table.maintable th.count, table.maintable td.count {
+	width: 1%;
+	text-align: center;
+	white-space: nowrap;
+}
+table.maintable td.count {
+	background-color: #E8E8E8;
+	font-weight: bold;
+	color: #333;
+}
+table.maintable th.lastpostinfo, table.maintable td.lastpostinfo {
+	width: 200px;
+}
+.msgbox h3, .preview h3 {
+	color: #EBD6AD;
+	font-weight: bold;
+	font-size: 8pt;
+	background-color: #369;
+	background-image: url(gfx/tableheadbg.gif);
+	background-position: top;
+	background-repeat: repeat-x;
+	text-align: left;
+	padding: 4px 6px 4px 6px;
+	border: 1px solid silver;
+	text-shadow: #4F4F4F 1px 1px 1px;
+}
+.msgbox p, .preview div.preview {
+	background-color: #EFEFEF;
+	padding: 15px 20px;
+	margin: 0 0 20px 0;
+	text-align: left;
+	border: 1px solid silver;
+	border-top: 0;
+	line-height: 150%;
+	font-size: 10pt;
+}
+.msgbox p p {
+	padding: 0;
+	border: 0;
+}
+.preview div.preview {
+	line-height: 125%;
+	padding: 18px;
+}
+
+/* Forumlist styles */
+
+table.maintable td.forumcat {
+	font-weight: bold;
+	background-image: url(gfx/topmenu_bg.png);
+	background-repeat: repeat-x;
+	background-color: #E8E8E8;
+	color: #333;
+}
+.forumname {
+	font-weight: bold;
+	font-size: 9pt;
+}
+.forumdescr {
+	margin: 3px 0 0 3px;
+}
+table.maintable td.online {
+	font-weight: bold;
+	background-image: url(gfx/topmenu_bg.png);
+	background-repeat: repeat-x;
+	background-color: #E8E8E8;
+	color: #333;
+}
+table.maintable td.stats-cell {
+	line-height: 150%;
+}
+.detailed-list-link {
+	float: right;
+	font-weight: bold;
+}
+
+/* Topiclist styles */
+
+#forumname {
+	font-size: 11pt;
+	font-weight: bold;
+	text-align: left;
+}
+#forumname a:link, #forumname a:hover, #forumname a:active, #forumname a:visited {
+	text-decoration: none;
+}
+#forummods {
+	text-align: left;
+	color: #444;
+	margin: 0 0 6px 0;
+}
+#toolbartop {
+	float: right;
+	line-height: 23px;
+	text-align: right;
+	margin: 0 0 6px 0;
+}
+#toolbartop a, #toolbarbottom a, #toolbartop .locked-msg, #toolbarbottom .locked-msg {
+	padding: 3px 11px 3px 11px;
+	margin: 0 0 0 4px;
+	font-weight: bold;
+}
+#toolbartop a, #toolbarbottom a {
+	background-image: url(gfx/button_normal.png);
+	background-repeat: repeat-x;
+	background-color: #E8E8E8;
+	text-decoration: none !important;
+	border-top: 1px solid #99b2cc;
+	border-left: 1px solid #99b2cc;
+	border-bottom: 1px solid #369;
+	border-right: 1px solid #369;
+}
+#toolbartop a:hover, #toolbarbottom a:hover {
+	background-image: url(gfx/button_reverse.png);
+	background-color: #FFF;
+	border-top: 1px solid #369;
+	border-left: 1px solid #369;
+	border-bottom: 1px solid #99b2cc;
+	border-right: 1px solid #99b2cc;
+}
+#toolbartop .locked-msg, #toolbarbottom .locked-msg {
+	background-color: #FEE;
+	border: 1px solid #F88;
+	color: #333;
+}
+#pagelinkstop {
+	float: left;
+	line-height: 23px;
+	font-weight: bold;
+	margin: 0 0 6px 0;
+}
+.topicname {
+	font-size: 9pt;
+}
+.topicpagelinks {
+	float: right;
+	text-align: right;
+	color: #444;
+	white-space: pre;
+	padding: 0 0 0 10px;
+}
+#toolbarbottom {
+	float: right;
+	line-height: 23px;
+	text-align: right;
+	margin: -14px 0 0 0;
+}
+#pagelinksbottom {
+	float: left;
+	line-height: 23px;
+	font-weight: bold;
+	margin: -14px 0 0 0;
+}
+#bottomfix {
+	clear: both;
+	height: 20px;
+}
+.author {
+	clear: left;
+	padding: 2px 0 0 3px;
+	color: #444;
+}
+.author a {
+	text-decoration: none;
+	color: #444;
+}
+
+/* Topic styles */
+
+table.maintable tr.tr1 td {
+	background-color: #EFEFEF;
+}
+table.maintable tr.tr2 td {
+	background-color: #E8E8E8;
+}
+table.maintable td.postername {
+	text-align: center;
+	font-size: 10pt;
+	font-weight: bold;
+	width: 135px;
+	height: 1%;
+}
+table.maintable td.postername .posternamecontainer {	
+	overflow: hidden;
+	width: 135px;
+}
+table.maintable td.postinfo {
+	vertical-align: middle;
+}
+table.maintable td.postinfo .postdate {
+	color: #444;
+}
+table.maintable td.postinfo .postlinks {
+	float: right;
+	font-weight: bold;
+	color: #999;
+}
+table.maintable td.posterinfo {
+	vertical-align: top;
+	text-align: center;
+	width: 135px;
+}
+table.maintable td.posterinfo .avatar {
+	margin-top: 10px;
+}
+table.maintable td.posterinfo .avatar img {
+	margin-bottom: 10px;
+}
+table.maintable td.posterinfo .field {
+	color: #444;
+}
+table.maintable td.postcontent {
+	vertical-align: top;
+}
+table.maintable td.postcontent .post {
+	width: 560px;
+	overflow: auto;
+	font-size: 10pt;
+	cursor: auto;
+	padding: 1px;
+}
+table.maintable td.postcontent .signature {
+	color: #444;
+	font-size: 8pt;
+}
+table.maintable td.postcontent .editinfo {
+	margin: 5px 0 0 0;
+	border-top: 1px solid silver;
+	padding: 5px 0 0 0;
+	color: #444;
+	font-size: 8pt;
+	font-style: italic;
+}
+table.maintable td.postcontent .poster-ip-addr {
+	color: #666;
+	font-size: 7pt;
+	text-align: right;
+	padding: 5px 0 0 0;
+}
+table.maintable td.postcontent .poster-ip-addr a {
+	text-decoration: none;
+}
+table.maintable td.posterinfo, table.maintable td.postcontent {
+	border-bottom: 4px solid #D8D8D8;
+}
+#actionlinks {
+	color: #323232;
+	text-align: left;
+	padding: 3px;
+	margin-bottom: 10px;
+	margin-top: -10px;
+}
+
+/* FAQ styles */
+
+table.maintable td#faq-contents {
+	font-size: 10pt;
+}
+table.maintable td#faq-contents h3 {
+	font-size: 10pt;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+table.maintable td#faq-contents ul {
+	margin: 0 0 10px 30px;
+}
+table.maintable td#faq-contents ul li {
+	font-style: italic;
+}
+table.maintable td#faq-contents ul li a {
+	font-style: normal;
+}
+table.maintable td#question {
+	font-size: 10pt;
+	padding: 12px !important;
+}
+
+/* Active topics styles */
+
+table.maintable td.atforum {
+	font-size: 7pt;
+	width: 1%;
+}
+
+/* Stats styles */
+
+table.maintable td.statstitle {
+	background-color: #E8E8E8;
+	font-weight: bold;
+	width: 1%;
+	white-space: nowrap;
+}
+table.statslayout {
+	width: 100%;
+	border-collapse: collapse;
+}
+table.statslayout td {
+	width: 50%;
+	vertical-align: top;
+	padding: 0 20px 0 0;
+}
+table.statslayout td.last {
+	padding: 0;
+}
+
+/* */
+
+table.confirmform td.msg, td.msg {
+	padding: 18px 36px 18px 36px !important;
+	font-size: 10pt;
+}
+table.maintable td.minimal {
+	background-color: #E8E8E8;
+	width: 1%;
+	white-space: nowrap;
+	text-align: center;
+}
+table.maintable td.avatar-field {
+	background-color: #E8E8E8;
+	width: 80px;
+	text-align: center;
+}
+#pagelinksothertop {
+	text-align: left;
+	font-weight: bold;
+	margin: 0 0 10px 0;
+}
+#pagelinksotherbottom {
+	text-align: left;
+	font-weight: bold;
+	margin: -10px 0 20px 0;
+}
+#pagelinkstop strong, #pagelinksbottom strong, #pagelinksothertop strong, #pagelinksotherbottom strong {
+	padding: 1px 2px 1px 2px;
+	border: 1px solid silver;
+	background-color: #EFEFEF;
+}
+ul#panelmenu {
+	list-style: none;
+	margin: 0 0 10px 0;
+	padding: 5px;
+	text-align: center;
+	background-color: #EFEFEF;
+	border: 1px solid silver;
+	color: #333;
+}
+ul#panelmenu li {
+	display: inline;
+	padding: 0 10px 0 10px;
+	border-left: 2px solid silver;
+}
+ul#panelmenu li#first {
+	border-left: 0;
+}
+p#linkbar {
+	color: #323232;
+	text-align: center;
+	margin-bottom: 20px;
+}
+p#linkbar a {
+	margin: 0 2px 0 2px;
+}
+p#linkbar #rss-feed-icon {
+	margin: 0 1px 0 3px;
+}
+p#linkbar #rss-feed-icon img {
+	vertical-align: middle;
+}
+.jump-in-data {
+	color: #666;
+	margin-left: 10px;
+}
+.moreinfo {
+	padding-top: 3px;
+	color: #333;
+}
+.results-posts-post-info td {
+	background-color: #E8E8E8 !important;
+}
+.results-posts-post-date {
+	float: right;
+}
+.results-posts-post-content td {
+	border-top: 0 !important;
+	border-bottom: 2px solid #c7c3c7;
+}
+.results-posts-post-content div {
+	line-height: 150%;
+	color: #333;
+	height: 48px;
+	overflow: hidden;
+}
+
+#bbcode-controls, #smiley-controls {
+	list-style: none;
+}
+#bbcode-controls li, #smiley-controls li {
+	display: inline;
+}
+
+#bbcode-controls {
+	margin: 0 0 5px 0;
+	width: 98%;
+	padding: 4px 3px 4px 3px;
+	background-color: #FFF;
+	background-image: url(gfx/bbcode_bg.png);
+	background-position: bottom;
+	background-repeat: repeat-x;
+	border: 1px solid #d7cbbe;
+	border-top: 0;
+}
+#bbcode-controls li a {
+	padding: 2px 6px 2px 6px;
+	margin: 0 2px 0 0;
+	text-decoration: none;
+	color: #333 !important;
+	cursor: default !important;
+}
+#bbcode-controls li a:hover {
+	padding: 2px 5px 2px 5px;
+	background-color: #dae2e4;
+	border: 1px solid #2058b9;
+}
+#smiley-controls {
+	margin: 3px 0 0 0;
+}
+#smiley-controls li {
+	margin: 0 5px 0 0;
+	vertical-align: sub;
+}
+
+#post-options input, #post-options label {
+	margin: 5px 0 0 0;
+}
+
+table#spamquestion, table.thinner-table, .msgbox, table.confirmform {
+	clear: both;
+	margin: 0 auto 20px auto;
+	width: 67%;
+}
+
+table.termsofuse {
+	margin: 0 0 20px 0;
+	width: 100%;
+}
+
+.bcc-input {
+	margin-top: 5px;
+}
+
+.potential-spammer-notice, .visibility-info {
+	color: #333;
+	font-style: italic;
+}
+
+.potential-spammer-notice {
+	padding-top: 3px;
+}
+
+.visibility-info {
+	padding-bottom: 5px;
+}
+
+#bottom {
+	clear: both;
+	float: left;
+	width: 705px;
+	padding: 3px 9px 3px 9px;
+	background-image: url(gfx/topmenu_bg.png);
+	background-repeat: repeat-x;
+	background-color: #E8E8E8;
+	border: 1px solid #369;
+	font-style: normal;
+	text-align: right;
+	color: #333;
+}
+#bottom a:link, #bottom a:hover, #bottom a:active, #bottom a:visited {
+	text-decoration: none;
+}
+#bottom-shadow {
+	float: left;
+	height: 5px;
+	background-image: url(gfx/topmenu_shadow.png);
+	background-repeat: repeat-x;
+	background-color: #FFF;
+	line-height: 100%;
+	overflow: hidden;
+	width: 100%; /* Be nice to Safari */
+}
+#shadow-left>#shadow-right {
+	padding-bottom: 40px;
+}
+
+a#usebb_acp_link {
+	font-weight: bold;
+}
+
+#debug-info-small {
+	margin: 0 auto 20px auto;
+	padding: 3px;
+	text-align: center;
+	background-color: #E8E8E8;
+	border: 1px solid silver;
+	color: #333;
+	font-size: 7pt;
+}
+#debug-info-large {
+	margin: 0 auto 20px auto;
+	font-size: 7pt;
+	text-align: center;
+	color: #333;
+}
+#debug-info-large div {
+	background-color: #E8E8E8;
+	padding: 3px;
+}
+#debug-info-large textarea {
+	color: #333;
+	font-size: 7pt !important;
+	font-family: monospace !important;
+	margin: 3px 0 0 0;
+	border: 1px solid silver;
+	padding: 3px;
+}
