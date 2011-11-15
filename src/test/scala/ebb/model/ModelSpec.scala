@@ -32,4 +32,14 @@ class ModelSpec extends Spec with BeforeAndAfter {
       }
     }
   }
+
+  describe("Model Relations") {
+    it("should open relatons") {
+      inTransaction {
+        topics.firstOption.foreach { topic =>
+          println(topic.posts.size)
+        }
+      }
+    }
+  }
 }
