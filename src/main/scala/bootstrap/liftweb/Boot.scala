@@ -13,10 +13,16 @@ import net.liftweb.mapper.{ DB, StandardDBVendor, DefaultConnectionIdentifier }
 import org.squeryl._
 import PrimitiveTypeMode._
 import adapters.MySQLAdapter
+
 class Boot {
   def boot {
+
+    val input = this.getClass.getResourceAsStream("/db.properties")
+    val db = new java.util.Properties
+    db.load(input)
+
     SessionFactory.concreteFactory = Some(() => Session.create(
-      java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/ebb", "root", ""),
+      java.sql.DriverManager.getConnection(db.getProperty("url"), db.getProperty("username"), db.getProperty("password")),
       new MySQLAdapter))
 
     S.addAround(new LoanWrapper {
