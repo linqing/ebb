@@ -42,4 +42,40 @@ object ForumSnippet {
       }
     })
   }
+
+  def topic: CssSel = {
+    ".maintable *" #> (for {
+      topicId <- S.param("id")
+      topic <- topics.lookup(topicId.toLong)
+      post <- posts.lookup(topicId.toLong)
+    } yield {
+      // TODO why can't 
+      /*
+       * Option(xx) match {
+       * } & ".xxx" #> "??"
+       */
+      val x = Option(post.poster_id) match {
+        case Some(id) => {
+          val poster = members.lookup(id).get
+          ".posternamecontainer *" #> poster.name &
+            "._registered" #> new SimpleDateFormat("MMM yy").format(post.post_time) &
+            "._posts" #> poster.posts &
+            "._location" #> poster.location
+        }
+        case _ => {
+          ".posternamecontainer *" #> post.poster_guest &
+            "._registered" #> "" &
+            "._posts" #> "" &
+            "._location" #> ""
+        }
+      }
+      x &
+        "._postdate" #> new SimpleDateFormat("MMM yy").format(post.post_time) &
+        "._poster_avatar" #> "???" &
+        "._post_content" #> post.content &
+        "._poster_sig" #> "???" &
+        "._post_editinfo" #> "???" &
+        "._poster_ip_addr" #> post.poster_ip_addr
+    })
+  }
 }
