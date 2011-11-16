@@ -16,18 +16,18 @@ object ForumSnippet {
       ".t-cat_header" #> ("@cat_name" #> cat.name) &
         ".t-forum" #> (for {
           f <- cat.forums
-          lastTopic <- topics.lookup(f.last_topic_id)
+          lastTopic <- topics.lookup(f.lastTopicId)
         } yield {
-          val lastPost = posts.lookup(lastTopic.last_post_id).get
-          val lastPoster = members.lookup(lastPost.poster_id).get
-          val lastTopicTitle = (if (lastTopic.count_replies > 1) "Re: " else "") + lastTopic.topic_title
+          val lastPost = posts.lookup(lastTopic.lastPostId).get
+          val lastPoster = members.lookup(lastPost.posterId).get
+          val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
           ".forumname *" #> f.name &
             ".forumdescr *" #> f.descr &
             ".total_topics" #> f.topics &
             ".total_posts" #> f.posts &
             ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
             ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
-            ".on_date *" #> ("@on_date" #> new SimpleDateFormat().format(lastPost.post_time))
+            ".on_date *" #> ("@on_date" #> new SimpleDateFormat().format(lastPost.postTime))
         })
     })
 
@@ -54,28 +54,28 @@ object ForumSnippet {
        * Option(xx) match {
        * } & ".xxx" #> "??"
        */
-      val x = Option(post.poster_id) match {
+      val x = Option(post.posterId) match {
         case Some(id) => {
           val poster = members.lookup(id).get
           ".posternamecontainer *" #> poster.name &
-            "._registered" #> new SimpleDateFormat("MMM yy").format(post.post_time) &
+            "._registered" #> new SimpleDateFormat("MMM yy").format(post.postTime) &
             "._posts" #> poster.posts &
             "._location" #> poster.location
         }
         case _ => {
-          ".posternamecontainer *" #> post.poster_guest &
+          ".posternamecontainer *" #> post.posterGuest &
             "._registered" #> "" &
             "._posts" #> "" &
             "._location" #> ""
         }
       }
       x &
-        "._postdate" #> new SimpleDateFormat("MMM yy").format(post.post_time) &
+        "._postdate" #> new SimpleDateFormat("MMM yy").format(post.postTime) &
         "._poster_avatar" #> "???" &
         "._post_content" #> post.content &
         "._poster_sig" #> "???" &
         "._post_editinfo" #> "???" &
-        "._poster_ip_addr" #> post.poster_ip_addr
+        "._poster_ip_addr" #> post.posterIpAddr
     })
   }
 }

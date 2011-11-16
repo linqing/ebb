@@ -13,12 +13,14 @@ class Ban(
   val id: Long,
   val name: String,
   val email: String,
-  val ip_addr: String) extends KeyedEntity[Long]
+  @Column("ip_addr")
+  val ipAddr: String) extends KeyedEntity[Long]
 
 class Cat(
   val id: Long,
   val name: String,
-  val sort_id: Long) extends KeyedEntity[Long] {
+  @Column("sort_id")
+  val sortId: Long) extends KeyedEntity[Long] {
   lazy val forums: OneToMany[Forum] = Models.catToForums.left(this)
 }
 
@@ -30,11 +32,16 @@ class Forum(
   val status: Int,
   val topics: Long,
   val posts: Long,
-  val last_topic_id: Long,
-  val sort_id: Long,
-  val auto_lock: Long,
-  val increase_post_count: Int,
-  val hide_mods_list: Long) extends KeyedEntity[Long] {
+  @Column("last_topic_id")
+  val lastTopicId: Long,
+  @Column("sort_id")
+  val sortId: Long,
+  @Column("auto_lock")
+  val autoLock: Long,
+  @Column("increase_post_count")
+  val increasePostCount: Int,
+  @Column("hide_mods_list")
+  val hideModsList: Long) extends KeyedEntity[Long] {
   lazy val mediators = Models.forumMediators.left(this)
 }
 
@@ -42,37 +49,56 @@ class Member(
   val id: Long,
   val name: String,
   val email: String,
-  val email_show: Boolean,
+  @Column("email_show")
+  val emailShow: Boolean,
   val passwd: String,
   val regdate: Long,
   val level: Long,
   val rank: String,
   val active: Boolean,
-  val active_key: String,
+  @Column("active_key")
+  val activeKey: String,
   val banned: Boolean,
   val banned_reason: String,
+  @Column("last_login")
   val last_login: Long,
-  val last_login_show: Boolean,
-  val last_pageview: Long,
-  val hide_from_online_list: Boolean,
+  @Column("last_login_show")
+  val lastLoginShow: Boolean,
+  @Column("last_pageview")
+  val lastPageview: Long,
+  @Column("hide_from_online_list")
+  val hideFromOnlineList: Boolean,
   val posts: Long,
   val template: String,
   val language: String,
-  val date_format: String,
+  @Column("date_format")
+  val dateFormat: String,
   val timezone: Double,
   val dst: Int,
-  val enable_quickreply: Boolean,
-  val return_to_topic_after_posting: Boolean,
-  val target_blank: Boolean,
-  val hide_avatars: Boolean,
-  val hide_userinfo: Boolean,
-  val hide_signatures: Boolean,
-  val auto_subscribe_topic: Boolean,
-  val auto_subscribe_reply: Boolean,
-  val avatar_type: Int,
-  val avatar_remote: String,
-  val displayed_name: String,
-  val real_name: String,
+  @Column("enable_quickreply")
+  val enableQuickreply: Boolean,
+  @Column("return_to_topic_after_posting")
+  val returnToTopicAfterPosting: Boolean,
+  @Column("target_blank")
+  val targetBlank: Boolean,
+  @Column("hide_avatars")
+  val hideAvatars: Boolean,
+  @Column("hide_userinfo")
+  val hideUserinfo: Boolean,
+  @Column("hide_signatures")
+  val hideSignatures: Boolean,
+  @Column("auto_subscribe_topic")
+  val autoSubscribeTopic: Boolean,
+  @Column("auto_subscribe_reply")
+  val autoSubscribeReply: Boolean,
+  @Column("avatar_type")
+  val avatarType: Int,
+  @Column("avatar_remote")
+  val avatarRemote: String,
+  @Column("displayed_name")
+  val displayedName: String,
+  @Column("real_name")
+  val realName: String,
   val signature: String,
   val birthday: Long,
   val location: String,
@@ -89,25 +115,38 @@ class Member(
 }
 
 class Moderators(
-  val forum_id: Long,
-  val user_id: Long) extends KeyedEntity[CompositeKey2[Long, Long]] {
-  def id = compositeKey(forum_id, user_id)
+  @Column("forum_id")
+  val forumId: Long,
+  @Column("user_id")
+  val userId: Long) extends KeyedEntity[CompositeKey2[Long, Long]] {
+  def id = compositeKey(forumId, userId)
 }
 
 class Post(
   val id: Long,
-  val topic_id: Long,
-  val poster_id: Long,
-  val poster_guest: String,
-  val poster_ip_addr: String,
+  @Column("topic_id")
+  val topicId: Long,
+  @Column("poster_id")
+  val posterId: Long,
+  @Column("poster_guest")
+  val posterGuest: String,
+  @Column("poster_ip_addr")
+  val posterIpAddr: String,
   val content: String,
-  val post_time: Long,
-  val post_edit_time: Long,
-  val post_edit_by: Long,
-  val enable_bbcode: Boolean,
-  val enable_smilies: Boolean,
-  val enable_sig: Boolean,
-  val enable_html: Boolean) extends KeyedEntity[Long]
+  @Column("post_time")
+  val postTime: Long,
+  @Column("post_edit_time")
+  val postEditTime: Long,
+  @Column("post_edit_by")
+  val postEditBy: Long,
+  @Column("enable_bbcode")
+  val enableBbcode: Boolean,
+  @Column("enable_smilies")
+  val enableSmilies: Boolean,
+  @Column("enable_sig")
+  val enableSig: Boolean,
+  @Column("enable_html")
+  val enableHtml: Boolean) extends KeyedEntity[Long]
 
 class Search(
   @Column("sess_id") val id: String,
@@ -116,8 +155,9 @@ class Search(
 
 class Session(
   @Column("sess_id") val id: String,
-  val user_id: Long,
-  val ip_addr: String,
+  val user_Id: Long,
+  @Column("ip_addr")
+  val ipAddr: String,
   val started: Long,
   val updated: Long,
   val location: String,
@@ -128,18 +168,27 @@ class Stat(
   val content: String) extends KeyedEntity[String]
 
 class Subscription(
-  val topic_id: Long,
-  val user_id: Long)
+  @Column("topic_id")
+  val topicId: Long,
+  @Column("user_id")
+  val userId: Long)
 
 class Topic(
   val id: Long,
-  val forum_id: Long,
-  val topic_title: String,
-  val first_post_id: Long,
-  val last_post_id: Long,
-  val count_replies: Long,
-  val status_locked: Boolean,
-  val status_sticky: Boolean) extends KeyedEntity[Long] {
+  @Column("forum_id")
+  val forumId: Long,
+  @Column("topic_title")
+  val topicTitle: String,
+  @Column("first_post_id")
+  val firstPostId: Long,
+  @Column("last_post_id")
+  val lastPostId: Long,
+  @Column("count_replies")
+  val countReplies: Long,
+  @Column("status_locked")
+  val statusLocked: Boolean,
+  @Column("status_sticky")
+  val statusSticky: Boolean) extends KeyedEntity[Long] {
   lazy val posts: OneToMany[Post] = Models.topicToPosts.left(this)
 }
 
@@ -158,7 +207,7 @@ object Models extends Schema {
     oneToManyRelation(cats, forums).
       via((c, f) => c.id === f.cat_id)
   val topicToPosts =
-    oneToManyRelation(topics, posts).via((t, p) => t.id === p.topic_id)
+    oneToManyRelation(topics, posts).via((t, p) => t.id === p.topicId)
   val forumMediators = manyToManyRelation(forums, members, "ebb_moderators").
-    via[Moderators]((forum, member, moderator) => (moderator.forum_id === forum.id, member.id === moderator.user_id))
+    via[Moderators]((forum, member, moderator) => (moderator.forumId === forum.id, member.id === moderator.userId))
 }
