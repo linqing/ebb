@@ -39,6 +39,14 @@ class ModelSpec extends Spec with BeforeAndAfter {
         topics.firstOption.foreach { topic =>
           println(topic.posts.size)
         }
+
+        forums.firstOption.foreach { forum =>
+          println(forum.mediators.size)
+        }
+
+        members.firstOption.foreach { member =>
+          println(member.forums.size)
+        }
       }
     }
   }

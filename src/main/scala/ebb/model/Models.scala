@@ -34,7 +34,9 @@ class Forum(
   val sort_id: Long,
   val auto_lock: Long,
   val increase_post_count: Int,
-  val hide_mods_list: Long) extends KeyedEntity[Long]
+  val hide_mods_list: Long) extends KeyedEntity[Long] {
+  lazy val mediators = Models.forumMediators.left(this)
+}
 
 class Member(
   val id: Long,
@@ -82,10 +84,15 @@ class Member(
   val aim: String,
   val icq: String,
   val jabber: String,
-  val skype: String) extends KeyedEntity[Long]
-//class Moderators(
-//  val forum_id: Long,
-//  val user_id: Long) extends IndirectKeyedEntity
+  val skype: String) extends KeyedEntity[Long] {
+  lazy val forums = Models.forumMediators.right(this)
+}
+
+class Moderators(
+  val forum_id: Long,
+  val user_id: Long) extends KeyedEntity[CompositeKey2[Long, Long]] {
+  def id = compositeKey(forum_id, user_id)
+}
 
 class Post(
   val id: Long,
@@ -152,4 +159,6 @@ object Models extends Schema {
       via((c, f) => c.id === f.cat_id)
   val topicToPosts =
     oneToManyRelation(topics, posts).via((t, p) => t.id === p.topic_id)
+  val forumMediators = manyToManyRelation(forums, members, "ebb_moderators").
+    via[Moderators]((forum, member, moderator) => (moderator.forum_id === forum.id, member.id === moderator.user_id))
 }
