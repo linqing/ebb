@@ -16,8 +16,14 @@ import adapters.MySQLAdapter
 
 class Boot {
   def boot {
-
-    val input = this.getClass.getResourceAsStream("/db.properties")
+    val userDbProp = System.getProperty("user.name") + ".db.properties"
+    var input = this.getClass.getResourceAsStream("/" + userDbProp)
+    if (input != null) {
+      println("Use user specified properties: " + userDbProp)
+    } else {
+      input = this.getClass.getResourceAsStream("/db.properties")
+      println("Use default properties: db.properties")
+    }
     val db = new java.util.Properties
     db.load(input)
 
