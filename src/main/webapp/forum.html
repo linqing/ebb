@@ -1,11 +1,35 @@
 <div id="main" class="lift:surround?with=default;at=content">
-	<h1>bbs</h1>
-	<!-- cat_header -->
-	<div class="lift:ForumSnippet.show">
-		<ul>
-			<li name="topic"><span name="name">*name</span>
-			<span name="posts">*posts</span>
-			</li>
-		</ul>
-	</div>
+  <h1>bbs</h1>
+
+  <table class="lift:ForumSnippet.topiclist maintable">
+    <tr class="t-forum_header">
+      <td colspan="5" class="forumcat"><span name="{cat_anchor}" rel="nofollow">&raquo;</span> <span name="forum_name">{forum_name}</span></td>
+    </tr>
+    <tr>
+      <th class="icon"></th>
+      <th>Topic</th>
+      <th class="count">Replies</th>
+      <th class="count">Views</th>
+      <th class="lastpostinfo">Latest Post</th>
+    </tr>
+
+  <!-- topic -->
+  <tr class="t-topic">
+    <td class="icon"><img src="{img_dir}{forum_icon}" alt="{forum_status}" /></td>
+    <td>
+    <div class="topic_title">{topic_title}</div>
+    </td>
+    <td class="count"><div class="count_replies">{count_replies}</div></td>
+    <td class="count"><div class="views">{todo_views}</div></td>
+    <td class="lastpostinfo">
+    <div class="latest_post">
+      <a href="">{latest_post}</a>
+    </div>
+    <div class="by_author">{by_author}</div>
+    <div class="on_date">{on_date}</div>
+    </td>
+  </tr>
+
+</table>
+
 </div>

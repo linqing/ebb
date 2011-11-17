@@ -23,8 +23,26 @@ object ForumSnippet {
           val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
           ".forumname *" #> <a href={"/forum?id=" + f.id}>{ f.name }</a> &
             ".forumdescr *" #>  f.descr  &
-            ".total_topics" #> f.topics &
+ //Todo     ".total_topics" #> f.topics &
             ".total_posts" #> f.posts &
+            ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
+            ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
+            ".on_date *" #> ("@on_date" #> new SimpleDateFormat().format(lastPost.postTime))
+        })
+    })
+
+  def topiclist: CssSel =
+    "*" #> (for (forum <- forums) yield {
+      ".t-forum_header" #> ("@forum_name" #> forum.name) &
+        ".t-topic" #> (for {
+	  t <- forum.topics
+          lastTopic <- topics.lookup(forum.lastTopicId)
+        } yield {
+          val lastPost = posts.lookup(lastTopic.lastPostId).get
+          val lastPoster = members.lookup(lastPost.posterId).get
+          val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
+          ".topic_title *" #> <a href={"/topic?id=" + t.id}>{ t.topicTitle }</a> &
+            ".count_replies" #> t.countReplies &
             ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
             ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
             ".on_date *" #> ("@on_date" #> new SimpleDateFormat().format(lastPost.postTime))

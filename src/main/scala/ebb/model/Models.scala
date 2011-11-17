@@ -30,7 +30,6 @@ class Forum(
   val cat_id: Long,
   val descr: String,
   val status: Int,
-  val topics: Long,
   val posts: Long,
   @Column("last_topic_id")
   val lastTopicId: Long,
@@ -43,6 +42,7 @@ class Forum(
   @Column("hide_mods_list")
   val hideModsList: Long) extends KeyedEntity[Long] {
   lazy val mediators = Models.forumMediators.left(this)
+  lazy val topics = Models.forumToTopics.left(this)
 }
 
 class Member(
@@ -210,4 +210,7 @@ object Models extends Schema {
     oneToManyRelation(topics, posts).via((t, p) => t.id === p.topicId)
   val forumMediators = manyToManyRelation(forums, members, "ebb_moderators").
     via[Moderators]((forum, member, moderator) => (moderator.forumId === forum.id, member.id === moderator.userId))
+  val forumToTopics =
+    oneToManyRelation(forums, topics).
+      via((f, t) => f.id === t.forumId)
 }
