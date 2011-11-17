@@ -21,8 +21,8 @@ object ForumSnippet {
           val lastPost = posts.lookup(lastTopic.lastPostId).get
           val lastPoster = members.lookup(lastPost.posterId).get
           val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
-          ".forumname *" #> f.name &
-            ".forumdescr *" #> f.descr &
+          ".forumname *" #> <a href={"/forum?id=" + f.id}>{ f.name }</a> &
+            ".forumdescr *" #>  f.descr  &
             ".total_topics" #> f.topics &
             ".total_posts" #> f.posts &
             ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
