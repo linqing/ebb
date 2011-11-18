@@ -63,4 +63,10 @@ test-output
 # syntax: regexp
 
 # ^\.pc/
-
+.cache
+.classpath
+.ensime
+.project
+.settings/
+lib_managed/
+project/boot/
