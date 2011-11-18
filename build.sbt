@@ -1,11 +1,13 @@
-name := "projname"
+name := "ebb"
 
-scalaVersion := "2.8.1"
+scalaVersion := "2.9.1"
 
 seq(webSettings: _*)
 
+libraryDependencies += "org.mortbay.jetty" % "jetty" % "6.1.22" % "container"
+
 // If using JRebel
-jettyScanDirs := Nil
+// jettyScanDirs := Nil
 
 retrieveManaged := true
 
@@ -22,13 +24,11 @@ libraryDependencies ++= {
 
 // Customize any further dependencies as desired
 libraryDependencies ++= Seq(
-  "org.eclipse.jetty" % "jetty-webapp" % "7.3.0.v20110203" % "jetty", // For Jetty 7
-  // "org.mortbay.jetty" % "jetty" % "6.1.22" % "jetty,test", // For Jetty 6, add scope test to make jetty avl. for tests
-  "mysql" % "mysql-connector-java" % "5.1.10",
-   "org.scalatest" %% "scalatest" % "1.5.1" % "compile->default",
-  // "org.scala-tools.testing" % "specs_2.8.1" % "1.6.8" % "test", // For specs.org tests
-  // "junit" % "junit" % "4.8" % "test->default", // For JUnit 4 testing
+   "mysql" % "mysql-connector-java" % "5.1.10",
+   "org.scalatest" %% "scalatest" % "1.6.1" % "compile->default",
   "javax.servlet" % "servlet-api" % "2.5" % "provided->default",
   "com.h2database" % "h2" % "1.2.138", // In-process database, useful for development systems
   "ch.qos.logback" % "logback-classic" % "0.9.26" % "compile->default" // Logging
 )
+
+
