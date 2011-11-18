@@ -1,21 +1,16 @@
-package ebb.model
+package ebb
+package model
 
 import org.scalatest.Spec
 import org.scalatest.BeforeAndAfter
 import Models._
 
 import org.squeryl._
-import adapters.MySQLAdapter
 import PrimitiveTypeMode._
 
-class ModelSpec extends Spec with BeforeAndAfter {
-  before {
-    Class.forName("com.mysql.jdbc.Driver");
-    SessionFactory.concreteFactory = Some(() =>
-      Session.create(
-        java.sql.DriverManager.getConnection("jdbc:mysql://localhost:3306/ebb", "root", ""),
-        new MySQLAdapter))
-  }
+class ModelSpec extends Spec with BeforeAndAfter with DbConnection {
+  before { connect() }
+
   describe("A Model") {
     it("should open all tables") {
       inTransaction {
