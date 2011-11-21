@@ -30,11 +30,14 @@ class Forum(
   val cat_id: Long,
   val descr: String,
   val status: Int,
+  @Column("topics")
+  val topicCount: Int,
   val posts: Long,
   @Column("last_topic_id")
   val lastTopicId: Long,
   @Column("sort_id")
   val sortId: Long,
+  val auth: String,
   @Column("auto_lock")
   val autoLock: Long,
   @Column("increase_post_count")
@@ -185,6 +188,8 @@ class Topic(
   val lastPostId: Long,
   @Column("count_replies")
   val countReplies: Long,
+  @Column("count_views")
+  val countViews: Long,
   @Column("status_locked")
   val statusLocked: Boolean,
   @Column("status_sticky")
