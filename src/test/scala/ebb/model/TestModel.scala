@@ -1,7 +1,12 @@
 package ebb.model
 
 object TestModels {
-  val cats = new Cat(1, "Test Category", 0) :: Nil
+  class CatImpl(
+    val id: Long,
+    val name: String,
+    val sortId: Long) extends Cat
+
+  val cats: List[Cat] = new CatImpl(1, "Test Category", 0) :: Nil
 
   val forums = new Forum(1, "Test Forum", 1, "This is a test forum for public testing.", 1, 1, 2, 1, 0, "0011222223", 0, 1, 0) :: Nil
 

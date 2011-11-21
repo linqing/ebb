@@ -16,12 +16,10 @@ class Ban(
   @Column("ip_addr")
   val ipAddr: String) extends KeyedEntity[Long]
 
-class Cat(
-  val id: Long,
-  val name: String,
-  @Column("sort_id")
-  val sortId: Long) extends KeyedEntity[Long] {
-  lazy val forums: OneToMany[Forum] = Models.catToForums.left(this)
+abstract class Cat{
+  val id: Long
+  val name: String
+  val sortId: Long
 }
 
 class Forum(
@@ -197,10 +195,17 @@ class Topic(
   lazy val posts: OneToMany[Post] = Models.topicToPosts.left(this)
 }
 
-object Models extends Schema {
+object Models extends Schema {  
+	class CatImpl(
+			val id: Long,
+			val name: String,
+			@Column("sort_id")
+			val sortId: Long)  extends Cat with KeyedEntity[Long] {
+				lazy val forums: OneToMany[Forum] = Models.catToForums.left(this)
+	}
   val badwords = table[Badword]("ebb_badwords")
   val bans = table[Ban]("ebb_bans")
-  val cats = table[Cat]("ebb_cats")
+  val cats = table[CatImpl]("ebb_cats")
   val forums = table[Forum]("ebb_forums")
   val members = table[Member]("ebb_members")
   val posts = table[Post]("ebb_posts")
