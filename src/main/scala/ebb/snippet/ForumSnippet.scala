@@ -21,9 +21,9 @@ object ForumSnippet {
           val lastPost = posts.lookup(lastTopic.lastPostId).get
           val lastPoster = members.lookup(lastPost.posterId).get
           val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
-          ".forumname *" #> <a href={"/forum?id=" + f.id}>{ f.name }</a> &
-            ".forumdescr *" #>  f.descr  &
- //Todo     ".total_topics" #> f.topics &
+          ".forumname *" #> <a href={ "/forum?id=" + f.id }>{ f.name }</a> &
+            ".forumdescr *" #> f.descr &
+            //Todo     ".total_topics" #> f.topics &
             ".total_posts" #> f.posts &
             ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
             ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
@@ -35,13 +35,13 @@ object ForumSnippet {
     "*" #> (for (forum <- forums) yield {
       ".t-forum_header" #> ("@forum_name" #> forum.name) &
         ".t-topic" #> (for {
-	  t <- forum.topics
+          t <- forum.topics
           lastTopic <- topics.lookup(forum.lastTopicId)
         } yield {
           val lastPost = posts.lookup(lastTopic.lastPostId).get
           val lastPoster = members.lookup(lastPost.posterId).get
           val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
-          ".topic_title *" #> <a href={"/topic?id=" + t.id}>{ t.topicTitle }</a> &
+          ".topic_title *" #> <a href={ "/topic?id=" + t.id }>{ t.topicTitle }</a> &
             ".count_replies" #> t.countReplies &
             ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
             ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
@@ -61,7 +61,14 @@ object ForumSnippet {
     })
   }
 
-  def topic: CssSel = {
+  def topic: CssSel =
+    S.param("id").flatMap(topicId => topics.lookup(topicId.toLong))
+      .map(topic => ("#forumname" #> topic.topicTitle &
+        "@post" #> (
+          for (post <- topic.posts.toList) yield { "._post_content" #> post.content })))
+      .openOr("*" #> <h1>NoTopic</h1>)
+
+  /* {
     ".maintable *" #> (for {
       topicId <- S.param("id")
       topic <- topics.lookup(topicId.toLong)
@@ -95,5 +102,5 @@ object ForumSnippet {
         "._post_editinfo" #> "???" &
         "._poster_ip_addr" #> post.posterIpAddr
     })
-  }
+  }*/
 }
