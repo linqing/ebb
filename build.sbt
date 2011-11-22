@@ -8,6 +8,7 @@ libraryDependencies += "org.mortbay.jetty" % "jetty" % "6.1.22" % "container"
 
 // If using JRebel
 // jettyScanDirs := Nil
+scanDirectories in Compile := Nil
 
 retrieveManaged := true
 
