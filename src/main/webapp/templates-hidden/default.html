@@ -8,6 +8,33 @@
     <link rel="stylesheet" type="text/css" href="/css/style.css" />
   </head>
   <body>
+  
+	<div id="pagebox-bg">
+	<div id="shadow-left">
+	<div id="shadow-right">
+	
+	<p id="logo"><a href="{link_home}"><img src="{img_dir}usebb.png" alt="UseBB" title="{l_Home}" /></a></p>
+	<h1 id="boardname"><span id="line">{board_name}</span></h1>
+	<h2 id="boarddescr">{board_descr}</h2>
+	
+	<div id="topmenu"><ul>
+		<li><a href="/">Home</a></li>
+		<li><a href="/register">Register</a></li>
+		<li><a href="/faq">FAQ</a></li>
+		<li><a href="/search">Search</a></li>
+		<li><a href="/active_topics">Active Topics</a></li>
+		<li><a href="/log_inout">Log In/Out</a></li>
+	</ul></div>
+	<div id="topmenu-shadow"></div>
+	
+	<p class="locationbar">
+		&bull; {location_bar}
+	</p>
+	
     <lift:bind name="content" />
+    
+    </div>
+    </div>
+    </div>
   </body>
 </html>

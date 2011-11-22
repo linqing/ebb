@@ -1,14 +1,16 @@
 <div id="main" class="lift:surround?with=default;at=content">
+	<div class="lift:ForumSnippet.topic">
 	<h3 id="forumname">{topic_name}</h3>
 	<p id="forummods">{forum_moderators}</p>
 	<p id="toolbartop">{reply_link}</p>
 	<p id="pagelinkstop">{page_links}</p>
 
-	<table class="lift:ForumSnippet.topic maintable">
+	<table class="maintable">
 	    <tr>
-	        <th>{l_Author}</th>
-	        <th>{l_Post}</th>
+	        <th>Author</th>
+	        <th>Post</th>
 	    </tr>
+	    <tbody name="post">
 	    <tr class="tr{colornum}">
 	        <td class="postername">
 	            <div class="posternamecontainer"><span class="_poster_name">{poster_name}</span></div>
@@ -37,6 +39,7 @@
 		        <span class="_poster_ip_addr">{poster_ip_addr}</span>
 	        </td>
 	    </tr>
+	    </tbody>
 	</table>
 
 	<p id="toolbarbottom">{reply_link}</p>
@@ -58,6 +61,5 @@
 	        <td colspan="2" class="formcontrols">{submit_button}&nbsp;{preview_button}</td>
 	    </tr>
 	</table>
+	</div>
 </div>
-
-
