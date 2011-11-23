@@ -1,40 +1,41 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:lift="http://liftweb.net/">
-  <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <title>ebb</title>
-    <script id="jquery" src="/classpath/jquery.js" type="text/javascript"/>
-    <link rel="stylesheet" type="text/css" href="/css/style.css" />
-  </head>
-  <body>
+<head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+<meta name="description" content="" />
+<meta name="keywords" content="" />
+<title>ebb</title>
+<script id="jquery" src="/classpath/jquery.js" type="text/javascript"/>
+<link rel="stylesheet" type="text/css" href="/css/style.css" />
+</head>
+<body>
+
+<div id="pagebox-bg">
+<div id="shadow-left">
+<div id="shadow-right">
   
-	<div id="pagebox-bg">
-	<div id="shadow-left">
-	<div id="shadow-right">
-	
-	<p id="logo"><a href="{link_home}"><img src="{img_dir}usebb.png" alt="UseBB" title="{l_Home}" /></a></p>
-	<h1 id="boardname"><span id="line">{board_name}</span></h1>
-	<h2 id="boarddescr">{board_descr}</h2>
-	
-	<div id="topmenu"><ul>
-		<li><a href="/"><span class="lift:Loc.Home">{Home}</span></a></li>
-		<li><a href="/register">Register</a></li>
-		<li><a href="/faq">FAQ</a></li>
-		<li><a href="/search">Search</a></li>
-		<li><a href="/active_topics">Active Topics</a></li>
-		<li><a href="/log_inout">Log In/Out</a></li>
-	</ul></div>
-	<div id="topmenu-shadow"></div>
-	
-	<p class="locationbar">
-		&bull; {location_bar}
-	</p>
-	
-    <lift:bind name="content" />
-    
-    </div>
-    </div>
-    </div>
-  </body>
+  <p id="logo"><a href="{link_home}"><img src="{img_dir}usebb.png" alt="UseBB" title="{l_Home}" /></a></p>
+  <h1 id="boardname"><span id="line">{board_name}</span></h1>
+  <h2 id="boarddescr">{board_descr}</h2>
+  
+<div id="topmenu"><ul>
+  <li><a href="/"><span class="lift:Loc.Home">{Home}</span>
+  </a></li>
+  <li><a href="/panel/index"><span class="lift:Loc.reg_panel">{reg_panel}</span></a></li>
+  <li><a href="/faq"><span class="lift:Loc.FAQ">{FAQ}</span></a></li>
+  <li><a href="/search"><span class="lift:Loc.Search">{Search}</span></a></li>
+  <li><a href="/active_topics"><span class="lift:Loc.ActiveTopics">Active Topics</span></a></li>
+  <li><a href="/log_inout">Log In/Out</a></li>
+</ul></div>
+<div id="topmenu-shadow"></div>
+
+<p class="locationbar">
+&bull; {location_bar}
+</p>
+
+<lift:bind name="content" />
+
+</div>
+</div>
+</div>
+</body>
 </html>
