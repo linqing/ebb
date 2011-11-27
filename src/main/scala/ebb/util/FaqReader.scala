@@ -65,7 +65,7 @@ object FaqReader {
   /**
    * Get the Faq by key.
    */
-  def getQuestion(key: String): Option[Faq] = {
+  def findFaq(key: String): Option[Faq] = {
     for {
       questions <- groups.values
       faq <- questions
