@@ -10,7 +10,7 @@ Requirements:
 1. Download the file
 -----------------------
 
-Download the the "ebb-bin.war" from the "all-in-one" directory
+Download the the "ebb-bin.war" from the "Downloads" page: <https://github.com/linqing/ebb/downloads/ebb-bin.war>
 
 2. Create database
 ------------------
