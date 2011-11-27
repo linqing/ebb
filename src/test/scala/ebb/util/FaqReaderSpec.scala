@@ -47,7 +47,7 @@ class FaqReaderSpec extends Spec with ShouldMatchers {
       val faq = faqList.first
       val key = faq.key
 
-      val found = FaqReader.getQuestion(key)
+      val found = FaqReader.findFaq(key)
       found should not be None
       found.get.question should equal(faq.question)
     }
