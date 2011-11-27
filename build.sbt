@@ -29,7 +29,8 @@ libraryDependencies ++= Seq(
    "org.scalatest" %% "scalatest" % "1.6.1" % "compile->default",
   "javax.servlet" % "servlet-api" % "2.5" % "provided->default",
   "com.h2database" % "h2" % "1.2.138", // In-process database, useful for development systems
-  "ch.qos.logback" % "logback-classic" % "0.9.26" % "compile->default" // Logging
+  "ch.qos.logback" % "logback-classic" % "0.9.26" % "compile->default", // Logging
+  "org.mortbay.jetty" % "jetty" % "6.1.22"
 )
 
 

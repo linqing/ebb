@@ -39,3 +39,8 @@ After that, it'll start a jetty server, and everything is ready.
 --------
 
 Open your browser and visit: http://localhost:8080 to see the homepage.
+
+5. all-in-one package
+---------------------
+
+see run_all_in_one.md
