@@ -20,14 +20,14 @@ object ForumSnippet {
         } yield {
           val lastPost = posts.lookup(lastTopic.lastPostId).get
           val lastPoster = members.lookup(lastPost.posterId).get
-          val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
+          val lastTopicTitle = (if (lastTopic.countReplies >= 1) "Re: " else "") + lastTopic.topicTitle
           ".forumname *" #> <a href={ "/forum?id=" + f.id }>{ f.name }</a> &
             ".forumdescr *" #> f.descr &
-            //Todo     ".total_topics" #> f.topics &
+        //    ".total_topics" #> f.topics &
             ".total_posts" #> f.posts &
-            ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
-            ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
-            ".on_date *" #> ("@on_date" #> new SimpleDateFormat().format(lastPost.postTime))
+            ".latest_post *" #> lastTopicTitle &
+            ".by_author *" #> { lastPoster.name } &
+            ".on_date *" #>  new SimpleDateFormat("yyyy-mm-dd HH:MM").format(lastPost.postTime)
         })
     })
 
@@ -43,9 +43,10 @@ object ForumSnippet {
           val lastTopicTitle = (if (lastTopic.countReplies > 1) "Re: " else "") + lastTopic.topicTitle
           ".topic_title *" #> <a href={ "/topic?id=" + t.id }>{ t.topicTitle }</a> &
             ".count_replies" #> t.countReplies &
-            ".latest_post *" #> ("@latest_post" #> lastTopicTitle) &
-            ".by_author *" #> ("@by_author" #> { lastPoster.name }) &
-            ".on_date *" #> ("@on_date" #> new SimpleDateFormat().format(lastPost.postTime))
+            ".latest_post *" #> lastTopicTitle &
+            ".by_author *" #> { lastPoster.name } &
+            ".on_date *" #> new SimpleDateFormat("yyyy-mm-dd hh:mm").format(lastPost.postTime) &
+	  ".views" #> t.countViews.toString
         })
     })
 
@@ -67,7 +68,7 @@ object ForumSnippet {
         "@post" #> (
           for (post <- topic.posts.toList) 
 	  yield { "._post_content" #> post.content &
-		  "._post_time" #> post.postTime &
+		  "._post_time" #> new SimpleDateFormat("yyyy-mm-dd hh:mm").format(post.postTime) &
 		  "._poster_name" #> (members.lookup(post.posterId) map (_.displayedName) getOrElse "") &
 		  "._registered" #> (members.lookup(post.posterId) map (_.regdate.toString) getOrElse "") &
 		 "._posts" #> ( members.lookup(post.posterId) map (_.posts.toString) getOrElse "")
