@@ -64,7 +64,7 @@ object ForumSnippet {
 
   def topic: CssSel =
     S.param("id").flatMap(topicId => topics.lookup(topicId.toLong))
-      .map(topic => ("#forumname" #> topic.topicTitle &
+      .map(topic => ("._forum_name" #> topic.topicTitle &
         "@post" #> (
           for (post <- topic.posts.toList) 
 	  yield { "._post_content" #> post.content &
