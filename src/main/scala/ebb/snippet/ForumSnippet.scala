@@ -65,7 +65,14 @@ object ForumSnippet {
     S.param("id").flatMap(topicId => topics.lookup(topicId.toLong))
       .map(topic => ("#forumname" #> topic.topicTitle &
         "@post" #> (
-          for (post <- topic.posts.toList) yield { "._post_content" #> post.content })))
+          for (post <- topic.posts.toList) 
+	  yield { "._post_content" #> post.content &
+		  "._post_time" #> post.postTime &
+		  "._poster_name" #> (members.lookup(post.posterId) map (_.displayedName) getOrElse "") &
+		  "._registered" #> (members.lookup(post.posterId) map (_.regdate.toString) getOrElse "") &
+		 "._posts" #> ( members.lookup(post.posterId) map (_.posts.toString) getOrElse "")
+	       }
+	)))
       .openOr("*" #> <h1>NoTopic</h1>)
 
   /* {
