@@ -9,6 +9,7 @@ import PrimitiveTypeMode._
 import net.liftweb.util.Helpers._
 import java.util._
 import java.text._
+import net.liftweb.util.TimeHelpers._
 
 object ForumSnippet {
   def forumlist: CssSel =
@@ -23,11 +24,12 @@ object ForumSnippet {
           val lastTopicTitle = (if (lastTopic.countReplies >= 1) "Re: " else "") + lastTopic.topicTitle
           ".forumname *" #> <a href={ "/forum?id=" + f.id }>{ f.name }</a> &
             ".forumdescr *" #> f.descr &
-        //    ".total_topics" #> f.topics &
+            ".total_topics" #> f.topics.size &
             ".total_posts" #> f.posts &
             ".latest_post *" #> lastTopicTitle &
-            ".by_author *" #> { lastPoster.name } &
-            ".on_date *" #>  new SimpleDateFormat("yyyy-mm-dd HH:MM").format(lastPost.postTime)
+            ".by_author *" #> ( lastPoster.name ) &
+            ".on_date *" #>
+	  ( new SimpleDateFormat("yyyy-mm-dd hh:mma E").format(new Date(lastPost.postTime * 1000)) ) 
         })
     })
 
@@ -45,7 +47,7 @@ object ForumSnippet {
             ".count_replies" #> t.countReplies &
             ".latest_post *" #> lastTopicTitle &
             ".by_author *" #> { lastPoster.name } &
-            ".on_date *" #> new SimpleDateFormat("yyyy-mm-dd hh:mm").format(lastPost.postTime) &
+            ".on_date" #> (new SimpleDateFormat("yyyy-mm-dd hh:mma E").format(new Date(lastPost.postTime * 1000)).toString)
 	  ".views" #> t.countViews.toString
         })
     })
